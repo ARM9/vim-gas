@@ -30,7 +30,7 @@ syn keyword gasDirective	.else .elseif .endef .endif .equ .equiv .eqv .err
 syn keyword gasDirective	.error .exitm .extern .fail .file .fill .global .globl
 syn keyword gasDirective	.gnu_attribute .hidden .ident .if .incbin .include .internal
 syn keyword gasDirective	.irp .irpc .lcomm .lflags .line .linkonce .list .ln .loc .loc_mark_labels
-syn keyword gasDirective	.local .mri .nolist .octa .org .p2alignw .p2alignl
+syn keyword gasDirective	.local .mri .nolist .octa .org .p2align .p2alignw .p2alignl
 syn keyword gasDirective	.popsection .previous .print .protected .psize .purgem .pushsection .quad
 syn keyword gasDirective	.reloc .rept .sbttl .scl .section .set .single .size .skip .sleb128
 syn keyword gasDirective	.space .stabd .stabn .stabs .struct .subsection
@@ -46,18 +46,18 @@ syn keyword gasDirectiveMacro	.altmacro .macro .noaltmacro .endm .func .endfunc
 syn keyword gasDirectiveX86	.att_syntax .intel_syntax .att_mnemonic .intel_mnemonic .lcomm
 
 " i*86 register set
-syn keyword gasRegisterX86	%rax %rbx %rcx %rdx %rdi %rsi %rsp %rbp
-syn keyword gasRegisterX86	%eax %ebx %ecx %edx %ax %bx %cx %dx %ah %al %bh %bl %ch %cl %dh %dl
-syn keyword gasRegisterX86	%edi %esi %esp %ebp %di %si %sp %bp %sph %spl %bph %bpl
-syn keyword gasRegisterX86	%cs %ds %es %fs %gs %ss %ip %eip %rip %eflags
-syn match   gasRegisterX86	/\<%r\([8-9]\|1[0-5]\)[lwd]\?\>/
+syn keyword gasRegisterX86	rax rbx rcx rdx rdi rsi rsp rbp
+syn keyword gasRegisterX86	eax ebx ecx edx ax bx cx dx ah al bh bl ch cl dh dl
+syn keyword gasRegisterX86	edi esi esp ebp di si sp bp sph spl bph bpl
+syn keyword gasRegisterX86	cs ds es fs gs ss ip eip rip eflags
+syn match   gasRegisterX86	/\<r\([8-9]\|1[0-5]\)[blwd]\?\>/
 
 " i*86 special registers
-syn match gasRegisterX86Cr	/\<%cr[0-8]\>/
-syn match gasRegisterX86Dr	/\<%dr[0-8]\>/
-syn match gasRegisterX86Tr	/\<%tr[0-8]\>/
-syn match gasRegisterX86Fp	/\<%sp\(([0-7])\)\?\>/
-syn match gasRegisterX86MMX	/\<%x\?mm[0-7]\>/
+syn match gasRegisterX86Cr	/\<cr[0-8]\>/
+syn match gasRegisterX86Dr	/\<dr[0-8]\>/
+syn match gasRegisterX86Tr	/\<tr[0-8]\>/
+syn match gasRegisterX86Fp	/\<sp\(([0-7])\)\?\>/
+syn match gasRegisterX86MMX	/\<[xy]\?mm[0-7]\>/
 
 " symbols and labels
 
@@ -73,7 +73,7 @@ syn match   gasDecimalNumber	/\$\?-\?\d\+/
 syn match   gasBinaryNumber	/\$\?-\?0b[01]\+/
 syn match   gasOctalNumber	/\$\?-\?0\d\+/
 syn match   gasHexNumber	/\$\?-\?0x\x\+/
-" -- TODO: gasFloatNumber
+syn match   gasFloatNumber      /\d*\.\d\+/
 
 " local label needs to be matched *after* numerics
 syn match   gasLocalLabel	/\d\{1,2\}[:fb]/
@@ -1809,6 +1809,7 @@ hi def link gasCharacter	Character
 hi def link gasBinaryNumber	Constant
 hi def link gasOctalNumber	Constant
 hi def link gasHexNumber	Constant
+hi def link gasFloatNumber      Constant
 hi def link gasDecimalNumber	Constant
 hi def link gasSymbol		Function
 hi def link gasSymbolRef	Special
