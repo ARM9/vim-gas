@@ -45,12 +45,18 @@ syn keyword gasDirectiveMacro	.altmacro .macro .noaltmacro .endm .func .endfunc
 " i*86 directives
 syn keyword gasDirectiveX86	.att_syntax .intel_syntax .att_mnemonic .intel_mnemonic .lcomm
 
+" symbols and labels
+syn match   gasLabel		/[-_$.A-Za-z0-9]\+\s*:/
+syn match   gasSymbol		/\<[^; \t()]\+\>/
+syn match   gasSymbolRef	/\$[-_$.A-Za-z][-_$.A-Za-z0-9]*\>/
+syn match   gasSpecial		/\<[$.]\>/
+
 " i*86 register set
 syn keyword gasRegisterX86	rax rbx rcx rdx rdi rsi rsp rbp
 syn keyword gasRegisterX86	eax ebx ecx edx ax bx cx dx ah al bh bl ch cl dh dl
 syn keyword gasRegisterX86	edi esi esp ebp di si sp bp sph spl bph bpl
 syn keyword gasRegisterX86	cs ds es fs gs ss ip eip rip eflags
-syn match   gasRegisterX86	/\<r\([8-9]\|1[0-5]\)[blwd]\?\>/
+syn match   gasRegisterX86	/\<r\%([8-9]\|1[0-5]\)[blwd]\?\>/
 
 " i*86 special registers
 syn match gasRegisterX86Cr	/\<cr[0-8]\>/
@@ -58,13 +64,8 @@ syn match gasRegisterX86Dr	/\<dr[0-8]\>/
 syn match gasRegisterX86Tr	/\<tr[0-8]\>/
 syn match gasRegisterX86Fp	/\<sp\(([0-7])\)\?\>/
 syn match gasRegisterX86MMX	/\<[xy]\?mm[0-7]\>/
-
-" symbols and labels
-
-syn match   gasLabel		/[-_$.A-Za-z0-9]\+\s*:/
-syn match   gasSymbol		/\<[^; \t()]\+\>/
-syn match   gasSymbolRef	/\$[-_$.A-Za-z][-_$.A-Za-z0-9]*\>/
-syn match   gasSpecial		/\<[$.]\>/
+syn match gasRegisterX64XMM     /\<[xy]mm\%([8-9]\|1[0-5]\)\>/
+syn match gasRegisterX64ZMM     /\<zmm\%([12]\?[0-9]\|3[0-1]\)\>/
 
 " constants
 syn region  gasString		start=/"/  end=/"/ skip=/\\"/
@@ -1798,6 +1799,8 @@ hi def link gasRegisterX86	gasRegister
 hi def link gasRegisterX86Cr	gasRegister
 hi def link gasRegisterX86Dr	gasRegister
 hi def link gasRegisterX86MMX	gasRegister
+hi def link gasRegisterX64XMM   gasRegister
+hi def link gasRegisterX64ZMM   gasRegister
 
 " link to defaults
 hi def link gasDirective	Preproc
