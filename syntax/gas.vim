@@ -46,7 +46,8 @@ syn keyword gasDirectiveMacro	.altmacro .macro .noaltmacro .endm .func .endfunc
 syn keyword gasDirectiveX86	.att_syntax .intel_syntax .att_mnemonic .intel_mnemonic .lcomm
 
 " symbols and labels
-syn match   gasLabel		/[-_$.A-Za-z0-9]\+\s*:/
+"syn match   gasLabel		/[-_$.A-Za-z0-9]\+\s*:/
+syn match   gasLabel		/[_$.A-Za-z0-9]\+:\?/
 syn match   gasSymbol		/\<[^; \t()]\+\>/
 syn match   gasSymbolRef	/\$[-_$.A-Za-z][-_$.A-Za-z0-9]*\>/
 syn match   gasSpecial		/\<[$.]\>/
@@ -81,12 +82,12 @@ syn match   gasHexNumber	/\$\?-\?0x\x\+/
 syn match   gasFloatNumber      /\d*\.\d\+/
 
 " local label needs to be matched *after* numerics
-syn match   gasLocalLabel	/\d\{1,2\}[:fb]/
+"syn match   gasLocalLabel	/\d\{1,3\}[:fb]/
 
 " comments etc.
 syn match   gasOperator		/[+-/*=|&~<>]\|<=\|>=\|<>/
 syn region  gasComment		start=/\/\*/ end=/\*\//
-syn region  gasCommentSingle    start=/#/ end=/$/
+syn region  gasCommentSingle    start="#\|//" end=/$/
 
 " finally: Opcodes
 "
@@ -1822,7 +1823,7 @@ hi def link gasSymbol		Function
 hi def link gasSymbolRef	Special
 hi def link gasSpecial		Special
 hi def link gasLabel		Function
-hi def link gasLocalLabel	Label
+" hi def link gasLocalLabel	Label
 hi def link gasOperator		Operator
 hi def link gasOpcode		Keyword
 hi def link gasComment		Comment
