@@ -79,7 +79,7 @@ syn match   gasDecimalNumber	/\$\?-\?\d\+/
 syn match   gasBinaryNumber	/\$\?-\?0b[01]\+/
 syn match   gasOctalNumber	/\$\?-\?0\d\+/
 syn match   gasHexNumber	/\$\?-\?0x\x\+/
-syn match   gasFloatNumber      /\d*\.\d\+/
+syn match   gasFloatNumber      /\%(\d\+\.\d*\|\d*\.\d\+\)\%([eE]\?[-+]\?\d\+\)\?\>/
 
 " local label needs to be matched *after* numerics
 "syn match   gasLocalLabel	/\d\{1,3\}[:fb]/
