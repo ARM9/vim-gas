@@ -61,7 +61,7 @@ syn keyword gasRegisterX86	%rax %rbx %rcx %rdx %rdi %rsi %rsp %rbp
 syn keyword gasRegisterX86	%eax %ebx %ecx %edx %ax %bx %cx %dx %ah %al %bh %bl %ch %cl %dh %dl
 syn keyword gasRegisterX86	%edi %esi %esp %ebp %di %si %sp %bp %sph %spl %bph %bpl
 syn keyword gasRegisterX86	%cs %ds %es %fs %gs %ss %ip %eip %rip %eflags
-syn match   gasRegisterX86	/\<%\?r\%([8-9]\|1[0-5]\)[blwd]\?\>/
+syn match   gasRegisterX86	/%\?r\%([8-9]\|1[0-5]\)[bwdl]\?/
 
 " i*86 special registers
 syn match gasRegisterX86Cr	/\<%\?cr[0-8]\>/
