@@ -19,7 +19,7 @@ setlocal isident   +=%,.,-,_
 syn case ignore
 
 " directives
-syn keyword gasDirective	.abort .ABORT .align .balignw .balignl
+syn keyword gasDirective	.abort .align .balign .balignw .balignl
 syn keyword gasDirective	.cfi_startproc .cfi_sections .cfi_endproc .cfi_personality
 syn keyword gasDirective	.cfi_lsda .cfi_def_cfa .cfi_def_cfa_register .cfi_def_cfa_offset
 syn keyword gasDirective	.cfi_adjust_cfa_offset .cfi_offset .cfi_rel_offset .cfi_register
