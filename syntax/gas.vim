@@ -47,21 +47,23 @@ syn keyword gasDirectiveX86	.att_syntax .intel_syntax .att_mnemonic .intel_mnemo
 
 " symbols and labels
 "syn match   gasLabel		/[-_$.A-Za-z0-9]\+\s*:/
-syn match   gasLabel		/[_$.A-Za-z0-9]\+:\?/
-syn match   gasSymbol		/\<[^; \t()]\+\>/
+"syn match   gasLabel		/[_$.A-Za-z0-9]\+:\?/
+syn match   gasLabel		/[_$.A-Za-z0-9]\+:/
+syn match   gasLabel		/[_$.A-Za-z][_$.A-Za-z0-9]\+/
+"syn match   gasSymbol		/\<[^; \t()]\+\>/
 syn match   gasSymbolRef	/\$[-_$.A-Za-z][-_$.A-Za-z0-9]*\>/
 syn match   gasSpecial		/\<[$.]\>/
 
 " i*86 register set
 syn keyword gasRegisterX86	rax rbx rcx rdx rdi rsi rsp rbp
 syn keyword gasRegisterX86	eax ebx ecx edx ax bx cx dx ah al bh bl ch cl dh dl
-syn keyword gasRegisterX86	edi esi esp ebp di si sp bp sph spl bph bpl
+syn keyword gasRegisterX86	edi esi esp ebp di si sp bp dil sil spl bpl
 syn keyword gasRegisterX86	cs ds es fs gs ss ip eip rip eflags
 syn keyword gasRegisterX86	%rax %rbx %rcx %rdx %rdi %rsi %rsp %rbp
 syn keyword gasRegisterX86	%eax %ebx %ecx %edx %ax %bx %cx %dx %ah %al %bh %bl %ch %cl %dh %dl
-syn keyword gasRegisterX86	%edi %esi %esp %ebp %di %si %sp %bp %sph %spl %bph %bpl
+syn keyword gasRegisterX86	%edi %esi %esp %ebp %di %si %sp %bp %dil %sil %spl %bpl
 syn keyword gasRegisterX86	%cs %ds %es %fs %gs %ss %ip %eip %rip %eflags
-syn match   gasRegisterX86	/%\?r\%([8-9]\|1[0-5]\)[bwdl]\?\>/
+syn match   gasRegisterX86	/%\?r\%([89]\|1[0-5]\)[bwdl]\?\>/
 
 " i*86 special registers
 syn match gasRegisterX86Cr	/\<%\?cr[0-8]\>/
@@ -69,8 +71,8 @@ syn match gasRegisterX86Dr	/\<%\?dr[0-8]\>/
 syn match gasRegisterX86Tr	/\<%\?tr[0-8]\>/
 syn match gasRegisterX86Fp	/\<%\?sp\(([0-7])\)\?\>/
 syn match gasRegisterX86MMX	/\<%\?[xy]\?mm[0-7]\>/
-syn match gasRegisterX64XMM     /\<%\?[xy]mm\%([8-9]\|1[0-5]\)\>/
-syn match gasRegisterX64ZMM     /\<%\?zmm\%([12]\?[0-9]\|3[0-1]\)\>/
+syn match gasRegisterX64XMM     /\<%\?[xy]mm\%([89]\|1[0-5]\)\>/
+syn match gasRegisterX64ZMM     /\<%\?zmm\%([12]\?[0-9]\|3[01]\)\>/
 
 " constants
 syn region  gasString		start=/"/  end=/"/ skip=/\\"/
@@ -133,9 +135,9 @@ syn keyword gasOpcode_SSE2		pmullw pmullwb pmullww pmullwl pmullwq
 syn keyword gasOpcode_SSE2		pmuludq pmuludqb pmuludqw pmuludql pmuludqq
 syn keyword gasOpcode_SSE2		por porb porw porl porq
 syn keyword gasOpcode_SSE2		psadbw psadbwb psadbww psadbwl psadbwq
-syn keyword gasOpcode_Base		pshufd pshufdb pshufdw pshufdl pshufdq
-syn keyword gasOpcode_Base		pshufhw pshufhwb pshufhww pshufhwl pshufhwq
-syn keyword gasOpcode_Base		pshuflw pshuflwb pshuflww pshuflwl pshuflwq
+syn keyword gasOpcode_SSE2		pshufd pshufdb pshufdw pshufdl pshufdq
+syn keyword gasOpcode_SSE2		pshufhw pshufhwb pshufhww pshufhwl pshufhwq
+syn keyword gasOpcode_SSE2		pshuflw pshuflwb pshuflww pshuflwl pshuflwq
 syn keyword gasOpcode_SSE2		pslldq pslldqb pslldqw pslldql pslldqq
 syn keyword gasOpcode_SSE2		psllw psllwb psllww psllwl psllwq
 syn keyword gasOpcode_SSE2		pslld pslldb pslldw pslldl pslldq
@@ -261,22 +263,22 @@ syn keyword gasOpcode_KATMAI_Base	prefetcht2 prefetcht2b prefetcht2w prefetcht2l
 syn keyword gasOpcode_KATMAI_Base	sfence
 
 "-- Section: Tejas New Instructions (SSSE3)
-syn keyword gasOpcode_Base		pabsb pabsbb pabsbw pabsbl pabsbq
-syn keyword gasOpcode_Base		pabsw pabswb pabsww pabswl pabswq
-syn keyword gasOpcode_Base		pabsd pabsdb pabsdw pabsdl pabsdq
-syn keyword gasOpcode_Base		palignr palignrb palignrw palignrl palignrq
-syn keyword gasOpcode_Base		phaddw phaddwb phaddww phaddwl phaddwq
-syn keyword gasOpcode_Base		phaddd phadddb phadddw phadddl phadddq
-syn keyword gasOpcode_Base		phaddsw phaddswb phaddsww phaddswl phaddswq
-syn keyword gasOpcode_Base		phsubw phsubwb phsubww phsubwl phsubwq
-syn keyword gasOpcode_Base		phsubd phsubdb phsubdw phsubdl phsubdq
-syn keyword gasOpcode_Base		phsubsw phsubswb phsubsww phsubswl phsubswq
-syn keyword gasOpcode_Base		pmaddubsw pmaddubswb pmaddubsww pmaddubswl pmaddubswq
-syn keyword gasOpcode_Base		pmulhrsw pmulhrswb pmulhrsww pmulhrswl pmulhrswq
-syn keyword gasOpcode_Base		pshufb pshufbb pshufbw pshufbl pshufbq
-syn keyword gasOpcode_Base		psignb psignbb psignbw psignbl psignbq
-syn keyword gasOpcode_Base		psignw psignwb psignww psignwl psignwq
-syn keyword gasOpcode_Base		psignd psigndb psigndw psigndl psigndq
+syn keyword gasOpcode_SSSE3		pabsb pabsbb pabsbw pabsbl pabsbq
+syn keyword gasOpcode_SSSE3		pabsw pabswb pabsww pabswl pabswq
+syn keyword gasOpcode_SSSE3		pabsd pabsdb pabsdw pabsdl pabsdq
+syn keyword gasOpcode_SSSE3		palignr palignrb palignrw palignrl palignrq
+syn keyword gasOpcode_SSSE3		phaddw phaddwb phaddww phaddwl phaddwq
+syn keyword gasOpcode_SSSE3		phaddd phadddb phadddw phadddl phadddq
+syn keyword gasOpcode_SSSE3		phaddsw phaddswb phaddsww phaddswl phaddswq
+syn keyword gasOpcode_SSSE3		phsubw phsubwb phsubww phsubwl phsubwq
+syn keyword gasOpcode_SSSE3		phsubd phsubdb phsubdw phsubdl phsubdq
+syn keyword gasOpcode_SSSE3		phsubsw phsubswb phsubsww phsubswl phsubswq
+syn keyword gasOpcode_SSSE3		pmaddubsw pmaddubswb pmaddubsww pmaddubswl pmaddubswq
+syn keyword gasOpcode_SSSE3		pmulhrsw pmulhrswb pmulhrsww pmulhrswl pmulhrswq
+syn keyword gasOpcode_SSSE3		pshufb pshufbb pshufbw pshufbl pshufbq
+syn keyword gasOpcode_SSSE3		psignb psignbb psignbw psignbl psignbq
+syn keyword gasOpcode_SSSE3		psignw psignwb psignww psignwl psignwq
+syn keyword gasOpcode_SSSE3		psignd psigndb psigndw psigndl psigndq
 
 "-- Section: Intel Fused Multiply-Add instructions (FMA)
 syn keyword gasOpcode_FUTURE_FMA	vfmadd132ps vfmadd132psb vfmadd132psw vfmadd132psl vfmadd132psq
@@ -1166,7 +1168,7 @@ syn keyword gasOpcode_SSE2		cmpordpd cmpordpdb cmpordpdw cmpordpdl cmpordpdq
 syn keyword gasOpcode_SSE2		cmpordsd cmpordsdb cmpordsdw cmpordsdl cmpordsdq
 syn keyword gasOpcode_SSE2		cmpunordpd cmpunordpdb cmpunordpdw cmpunordpdl cmpunordpdq
 syn keyword gasOpcode_SSE2		cmpunordsd cmpunordsdb cmpunordsdw cmpunordsdl cmpunordsdq
-syn keyword gasOpcode_Base		cmppd cmppdb cmppdw cmppdl cmppdq
+syn keyword gasOpcode_SSE2		cmppd cmppdb cmppdw cmppdl cmppdq
 syn keyword gasOpcode_SSE2		cmpsd cmpsdb cmpsdw cmpsdl cmpsdq
 syn keyword gasOpcode_SSE2		comisd comisdb comisdw comisdl comisdq
 syn keyword gasOpcode_SSE2		cvtdq2pd cvtdq2pdb cvtdq2pdw cvtdq2pdl cvtdq2pdq
@@ -1853,7 +1855,6 @@ func! s:MapOpcode (group, cpu, ext)
 
 	exe 'hi link '.a:group.' '.himap
 endf
-
 call <SID>MapOpcode('gasOpcode_186_Base'       , '186'        , 'base')
 call <SID>MapOpcode('gasOpcode_286_Base'       , '286'        , 'base')
 call <SID>MapOpcode('gasOpcode_3862_Base'      , '3862'       , 'base')
@@ -1887,6 +1888,8 @@ call <SID>MapOpcode('gasOpcode_X64_SSE41'      , 'x64'        , 'sse4.1')
 call <SID>MapOpcode('gasOpcode_X64_SSE42'      , 'x64'        , 'sse4.2')
 call <SID>MapOpcode('gasOpcode_X64_VMX'        , 'x64'        , 'vmx')
 call <SID>MapOpcode('gasOpcode_X86_64_Base'    , 'x64'        , 'base')
+call <SID>MapOpcode('gasOpcode_SSE2'           , 'pentium'    , 'sse2')
+call <SID>MapOpcode('gasOpcode_SSSE3'          , 'pentium'    , 'ssse3')
 
 " support CPP preprocessor tags
 syn case match
