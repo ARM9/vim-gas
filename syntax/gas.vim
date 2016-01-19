@@ -644,7 +644,6 @@ syn keyword gasOpcode_X64_Base		idiv
 syn keyword gasOpcode_X64_Base		imul imulb imulw imull imulq
 syn keyword gasOpcode_386_Base		in
 syn keyword gasOpcode_X64_Base		inc incb incw incl incq
-syn keyword gasOpcode_Base		incbin
 syn keyword gasOpcode_186_Base		insb
 syn keyword gasOpcode_386_Base		insd
 syn keyword gasOpcode_186_Base		insw
