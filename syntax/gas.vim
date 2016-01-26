@@ -49,7 +49,7 @@ syn keyword gasDirectiveX86	.att_syntax .intel_syntax .att_mnemonic .intel_mnemo
 "syn match   gasLabel		/[-_$.A-Za-z0-9]\+\s*:/
 "syn match   gasLabel		/[_$.A-Za-z0-9]\+:\?/
 syn match   gasLabel		/[_$.A-Za-z0-9]\+:/
-syn match   gasLabel		/[_$.A-Za-z][_$.A-Za-z0-9]\+/
+syn match   gasLabel		/[_$.A-Za-z][_$.A-Za-z0-9]*/
 "syn match   gasSymbol		/\<[^; \t()]\+\>/
 syn match   gasSymbolRef	/\$[-_$.A-Za-z][-_$.A-Za-z0-9]*\>/
 syn match   gasSpecial		/\<[$.]\>/
