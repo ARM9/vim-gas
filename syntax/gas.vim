@@ -76,7 +76,7 @@ syn match gasRegisterX64ZMM     /\<%\?zmm\%([12]\?[0-9]\|3[01]\)\>/
 
 " constants
 syn region  gasString		start=/"/  end=/"/ skip=/\\"/
-syn match   gasCharacter	/'\(?\|\\?\)/
+syn match   gasCharacter        /'\\\?[\d32-~]'\?/
 syn match   gasDecimalNumber	/\$\?-\?\d\+/
 syn match   gasBinaryNumber	/\$\?-\?0b[01]\+/
 syn match   gasOctalNumber	/\$\?-\?0\d\+/
