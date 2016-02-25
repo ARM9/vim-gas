@@ -28,12 +28,15 @@ syn keyword gasDirective	.cfi_return_column .cfi_signal_frame .cfi_window_save .
 syn keyword gasDirective	.cfi_val_encoded_addr .data .def .desc .dim .eject
 syn keyword gasDirective	.else .elseif .endef .endif .equ .equiv .eqv .err
 syn keyword gasDirective	.error .exitm .extern .fail .file .fill .global .globl
-syn keyword gasDirective	.gnu_attribute .hidden .ident .if .incbin .include .internal
-syn keyword gasDirective	.irp .irpc .lcomm .lflags .line .linkonce .list .ln .loc .loc_mark_labels
-syn keyword gasDirective	.local .mri .nolist .octa .org .p2align .p2alignw .p2alignl
-syn keyword gasDirective	.popsection .previous .print .protected .psize .purgem .pushsection .quad
-syn keyword gasDirective	.reloc .rept .sbttl .scl .section .set .single .size .skip .sleb128
-syn keyword gasDirective	.space .stabd .stabn .stabs .struct .subsection
+syn keyword gasDirective	.gnu_attribute .hidden .ident .if .ifdef .ifb
+syn keyword gasDirective        .ifc .ifeq .ifeqs .ifge .ifgt .ifle .iflt .ifnb
+syn keyword gasDirective        .ifnc .ifndef .ifnotdef .ifne .ifnes .incbin .include
+syn keyword gasDirective        .internal .irp .irpc .lcomm .lflags .line .linkonce
+syn keyword gasDirective        .list .ln .loc .loc_mark_labels .local .mri .nolist .octa
+syn keyword gasDirective	.org .p2align .p2alignw .p2alignl .popsection .previous
+syn keyword gasDirective	.print .protected .psize .purgem .pushsection .quad
+syn keyword gasDirective	.reloc .rept .sbttl .scl .section .set .single .size .skip
+syn keyword gasDirective	.sleb128 .space .stabd .stabn .stabs .struct .subsection
 syn keyword gasDirective	.symver .tag .text .title .type .uleb128 .val .version
 syn keyword gasDirective	.vtable_entry .vtable_inherit .warning .weak .weakref
 
