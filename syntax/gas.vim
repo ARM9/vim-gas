@@ -19,29 +19,31 @@ setlocal isident   +=%,.,-,_
 syn case ignore
 
 " directives
-syn keyword gasDirective	.abort .align .balign .balignw .balignl
+syn keyword gasDirective	.abort .align .balign .balignw .balignl .bss
 syn keyword gasDirective	.cfi_startproc .cfi_sections .cfi_endproc .cfi_personality
 syn keyword gasDirective	.cfi_lsda .cfi_def_cfa .cfi_def_cfa_register .cfi_def_cfa_offset
 syn keyword gasDirective	.cfi_adjust_cfa_offset .cfi_offset .cfi_rel_offset .cfi_register
 syn keyword gasDirective	.cfi_restore .cfi_undefined .cfi_same_value .cfi_remember_state
 syn keyword gasDirective	.cfi_return_column .cfi_signal_frame .cfi_window_save .cfi_escape
 syn keyword gasDirective	.cfi_val_encoded_addr .data .def .desc .dim .eject
-syn keyword gasDirective	.else .elseif .endef .endif .equ .equiv .eqv .err
+syn keyword gasDirective	.else .elseif .endef .endif .endr .equ .equiv .eqv .err
 syn keyword gasDirective	.error .exitm .extern .fail .file .fill .global .globl
 syn keyword gasDirective	.gnu_attribute .hidden .ident .if .ifdef .ifb
 syn keyword gasDirective        .ifc .ifeq .ifeqs .ifge .ifgt .ifle .iflt .ifnb
 syn keyword gasDirective        .ifnc .ifndef .ifnotdef .ifne .ifnes .incbin .include
-syn keyword gasDirective        .internal .irp .irpc .lcomm .lflags .line .linkonce
-syn keyword gasDirective        .list .ln .loc .loc_mark_labels .local .mri .nolist .octa
+syn keyword gasDirective        .internal .irp .irep .irpc .lcomm .lflags .line .linkonce
+syn keyword gasDirective        .list .ln .loc .loc_mark_labels .local .mri .nolist
 syn keyword gasDirective	.org .p2align .p2alignw .p2alignl .popsection .previous
-syn keyword gasDirective	.print .protected .psize .purgem .pushsection .quad
-syn keyword gasDirective	.reloc .rept .sbttl .scl .section .set .single .size .skip
+syn keyword gasDirective	.print .protected .psize .purgem .pushsection
+syn keyword gasDirective	.reloc .rept .sbttl .scl .section .set .size .skip
 syn keyword gasDirective	.sleb128 .space .stabd .stabn .stabs .struct .subsection
 syn keyword gasDirective	.symver .tag .text .title .type .uleb128 .val .version
-syn keyword gasDirective	.vtable_entry .vtable_inherit .warning .weak .weakref
+syn keyword gasDirective	.vtable_entry .vtable_inherit .warning .weak .weakref .zero
 
-syn keyword gasDirectiveStore	.byte .hword .word .int .long .double .short .float
-syn keyword gasDirectiveStore	.string .string8 .string16 .ascii .asciz .comm
+syn keyword gasDirectiveStore	.byte .hword .short .word .int .long .quad .octa
+syn keyword gasDirectiveStore	.single .double .float
+syn keyword gasDirectiveStore	.string .string8 .string16 .string32 .string64
+syn keyword gasDirectiveStore   .ascii .asciz .comm
 
 syn keyword gasDirectiveMacro	.altmacro .macro .noaltmacro .endm .func .endfunc
 
